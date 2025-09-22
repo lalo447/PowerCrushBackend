@@ -1,0 +1,6 @@
+@MiProyectoEFEC_HostAddress = http://localhost:5233
+
+GET {{MiProyectoEFEC_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

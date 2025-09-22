@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="13.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DataBase\Scripts\Alters\" />
+    <Folder Include="DataBase\Scripts\Inserts\" />
+    <Folder Include="DataBase\Scripts\Updates\" />
+    <Folder Include="DataBase\Scripts\StoredProcedures\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Principal\NewSystem.csproj" />
+  </ItemGroup>
+
+</Project>
