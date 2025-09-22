@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NewSystem.Domain.PowerCrushPlayer;
+using NewSystem.Domain.PowerCrushProduct;
 using NewSystem.Domain.ToolsIoan;
 
 namespace NewSystem.Data
@@ -9,7 +10,8 @@ namespace NewSystem.Data
     {
         public NewSystemContext(DbContextOptions<NewSystemContext> options) : base(options) { }
         public virtual DbSet<ToolsIoans> ToolsIoan { get; set; }
-        public virtual DbSet<Players> PowerCrushPlayers { get; set; }
+        public virtual DbSet<Players> Players { get; set; }
+        public virtual DbSet<Products> Products { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

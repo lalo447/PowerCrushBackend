@@ -9,6 +9,5 @@
         public int CategoryId { get; private set; }
         public bool IsComposed { get; private set; }
         public string ImageUrl { get; private set; }
-
     }
 }
