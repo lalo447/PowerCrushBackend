@@ -10,8 +10,8 @@ namespace NewSystem.Data.Schema
         {
             builder.ToTable("Players");
             builder.HasKey(e => e.Id);
-            builder.Property(e => e.Id).IsRequired().UseIdentityColumn(1,1).ValueGeneratedOnAdd().HasColumnName("Id");
-            builder.Property(e => e.Name).IsRequired().HasColumnName("Name");
+            builder.Property(e => e.Id).IsRequired().HasAnnotation("Sqlite:Autoincrement", true).ValueGeneratedOnAdd().HasColumnName("Id");
+            builder.Property(e => e.Name).IsRequired().HasMaxLength(120).HasColumnName("Name");
             builder.Property(e => e.Points).IsRequired().HasColumnName("Points");
         }
     }

@@ -17,7 +17,7 @@ namespace NewSystem
             var conn = config.GetConnectionString("DefaultConnection");
             services.AddDbContext<NewSystemContext>(opt =>
             {
-                opt.UseSqlServer(conn, sql =>
+                opt.UseSqlite(conn, sql =>
                 {
                     sql.MigrationsAssembly(typeof(NewSystemContext).Assembly.FullName);
                 });
