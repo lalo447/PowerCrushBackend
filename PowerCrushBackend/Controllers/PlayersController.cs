@@ -1,17 +1,16 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using NewSystem;
-using NewSystem.App.Product;
-using NewSystem.App.ToolsIoan;
+using NewSystem.App.Player;
 
 namespace PowerCrushBackend.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class ProductsController : ControllerBase
+    public class PlayersController : ControllerBase
     {
         private readonly IMediator _mediator;
-        public ProductsController(IMediator mediator)
+        public PlayersController(IMediator mediator)
         {
             _mediator = mediator;
         }
@@ -20,14 +19,14 @@ namespace PowerCrushBackend.Controllers
         /// <param name="cancellation">The cancellation.</param>
         /// <returns>Returns the list of tool loans, otherwise it returns an error.</returns>
         [HttpGet]
-        public async Task<ActionResult<List<ToolsIoanList>>> GetAll(CancellationToken cancellation)
+        public async Task<ActionResult<List<GetPlayersList>>> GetAll(CancellationToken cancellation)
         {
-            var result = await _mediator.Send(new GetProductsQuery(), cancellation);
+            var result = await _mediator.Send(new GetPlayersQuery(), cancellation);
 
             return result switch
             {
-                Ok<List<GetProductsList>> ok => Ok(ok.Value),
-                Error<List<GetProductsList>> error => NotFound(new { error.Code, error.Message }),
+                Ok<List<GetPlayersList>> ok => Ok(ok.Value),
+                Error<List<GetPlayersList>> error => NotFound(new { error.Code, error.Message }),
                 _ => StatusCode(500)
             };
         }
@@ -37,7 +36,7 @@ namespace PowerCrushBackend.Controllers
         /// <param name="cancellation">The cancellation.</param>
         /// <returns>Returns a boolean if everything is done correctly, if not, it returns an error.</returns>
         [HttpPost]
-        public async Task<ActionResult<bool>> UpSert([FromBody] UpSertProductCommand command, CancellationToken cancellation)
+        public async Task<ActionResult<bool>> UpSert([FromBody] UpSertPlayerCommand command, CancellationToken cancellation)
         {
             var result = await _mediator.Send(command, cancellation);
 
@@ -54,7 +53,7 @@ namespace PowerCrushBackend.Controllers
         /// <param name="cancellation">The cancellation.</param>
         /// <returns>Returns a boolean if everything is done correctly, if not, it returns an error.</returns>
         [HttpDelete]
-        public async Task<ActionResult<bool>> Delete([FromQuery] RemoveProductCommand command, CancellationToken cancellation)
+        public async Task<ActionResult<bool>> Delete([FromQuery] RemovePlayerCommand command, CancellationToken cancellation)
         {
             var result = await _mediator.Send(command, cancellation);
 
