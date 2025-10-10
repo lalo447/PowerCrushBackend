@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using Azure.Core;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using NewSystem.Data;
 using NewSystem.Domain.PowerCrushPlayer;
@@ -14,6 +15,9 @@ namespace NewSystem.App.Player
         /// <returns>Returns true if you perform the operation.</returns>
         public async Task<Result<bool>> Handle(UpSertPlayerCommand command, CancellationToken cancellationToken)
         {
+            if (string.IsNullOrEmpty(command.Name) || command.Points == null)
+                return new Error<bool>("NotFound", "Data cannot be null for insertion");
+
             var player = await context.Players.AsNoTracking().FirstOrDefaultAsync(x => x.Name == command.Name);
 
             if (player is not null)
