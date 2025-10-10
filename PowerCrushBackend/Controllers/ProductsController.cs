@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using NewSystem;
 using NewSystem.App.Product;
-using NewSystem.App.ToolsIoan;
 
 namespace PowerCrushBackend.Controllers
 {
@@ -20,7 +19,7 @@ namespace PowerCrushBackend.Controllers
         /// <param name="cancellation">The cancellation.</param>
         /// <returns>Returns the list of tool loans, otherwise it returns an error.</returns>
         [HttpGet]
-        public async Task<ActionResult<List<ToolsIoanList>>> GetAll(CancellationToken cancellation)
+        public async Task<ActionResult<List<GetProductsList>>> GetAll(CancellationToken cancellation)
         {
             var result = await _mediator.Send(new GetProductsQuery(), cancellation);
 

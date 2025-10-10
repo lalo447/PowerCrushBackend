@@ -4,7 +4,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NewSystem.App;
 using NewSystem.Data;
-using NewSystem.Service;
 
 namespace NewSystem
 {
@@ -27,8 +26,6 @@ namespace NewSystem
             {
                 cfg.RegisterServicesFromAssembly(typeof(NewSystemModule).Assembly);
             });
-
-            services.AddScoped<ICreateNumberIoan, CreateNumberIoan>();
 
             return services;
         }

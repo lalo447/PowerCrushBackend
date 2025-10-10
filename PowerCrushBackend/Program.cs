@@ -1,6 +1,6 @@
 using MediatR;
 using NewSystem;
-using NewSystem.App.ToolsIoan;
+using NewSystem.App.Product;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +14,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddNewSystemModule(builder.Configuration);
 builder.Services.AddMediatR(cfg =>
 {
-    cfg.RegisterServicesFromAssembly(typeof(GetToolsQuery).Assembly);
+    cfg.RegisterServicesFromAssembly(typeof(GetProductsQuery).Assembly);
 });
 
 builder.Services.AddCors(options =>
