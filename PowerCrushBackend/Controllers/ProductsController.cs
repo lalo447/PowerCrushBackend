@@ -31,6 +31,22 @@ namespace PowerCrushBackend.Controllers
             };
         }
 
+        /// <summary>Gets all.</summary>
+        /// <param name="cancellation">The cancellation.</param>
+        /// <returns>Returns the list of tool loans, otherwise it returns an error.</returns>
+        [HttpGet("random")]
+        public async Task<ActionResult<List<GetProductsRandomList>>> GetRandomAll(CancellationToken cancellation)
+        {
+            var result = await _mediator.Send(new GetRandomProductsQuery(), cancellation);
+
+            return result switch
+            {
+                Ok<List<GetProductsRandomList>> ok => Ok(ok.Value),
+                Error<List<GetProductsRandomList>> error => NotFound(new { error.Code, error.Message }),
+                _ => StatusCode(500)
+            };
+        }
+
         /// <summary>Ups the sert.</summary>
         /// <param name="command">The command.</param>
         /// <param name="cancellation">The cancellation.</param>
