@@ -20,7 +20,7 @@ namespace NewSystem.App.Player
 
             context.Remove(remove);
 
-            await context.SaveChangesAsync();
+            await context.SaveChangesAsync(cancellationToken);
 
             return new Ok<bool>(true);
         }

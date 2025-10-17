@@ -24,7 +24,7 @@ namespace NewSystem.App.Player
                 x.Id,
                 x.Name,
                 x.Points))
-            .ToListAsync();
+            .ToListAsync(cancellationToken);
 
             if (data is null)
                 return new Error<List<GetPlayersList>>("NotFound", "Players not found");

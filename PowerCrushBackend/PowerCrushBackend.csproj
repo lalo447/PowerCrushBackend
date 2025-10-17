@@ -16,13 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DataBase\Scripts\Alters\" />
-    <Folder Include="DataBase\Scripts\Inserts\" />
-    <Folder Include="DataBase\Scripts\Updates\" />
-    <Folder Include="DataBase\Scripts\StoredProcedures\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Principal\NewSystem.csproj" />
   </ItemGroup>
 

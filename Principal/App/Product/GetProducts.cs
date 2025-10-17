@@ -23,7 +23,7 @@ namespace NewSystem.App.Product
                 x.IsComposed,
                 x.ImageUrl
              ))
-            .ToListAsync();
+            .ToListAsync(cancellationToken);
 
             if (data is null)
                 return new Error<List<GetProductsList>>("NotFound", "Not products were found");

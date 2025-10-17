@@ -22,7 +22,7 @@ namespace NewSystem.App.Product
             if (product is not null)
             {
                 product.Update(request.CategoryId, request.IsComposed, request.ImageUrl);
-                await context.SaveChangesAsync();
+                await context.SaveChangesAsync(cancellationToken);
 
                 return new Ok<bool>(true);
             }
@@ -30,7 +30,7 @@ namespace NewSystem.App.Product
             Products? productRegister = Products.Create(request.Code, request.CategoryId, request.IsComposed, request.ImageUrl);
 
             context.Add(productRegister);
-            await context.SaveChangesAsync();
+            await context.SaveChangesAsync(cancellationToken);
             return new Ok<bool>(true);
         }
     }

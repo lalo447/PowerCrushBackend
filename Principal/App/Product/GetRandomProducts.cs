@@ -24,7 +24,7 @@ namespace NewSystem.App.Product
                 x.ImageUrl
              ))
             .Take(5)
-            .ToListAsync();
+            .ToListAsync(cancellationToken);
 
             if (data is null)
                 return new Error<List<GetProductsRandomList>>("NotFound", "Not products were found");
